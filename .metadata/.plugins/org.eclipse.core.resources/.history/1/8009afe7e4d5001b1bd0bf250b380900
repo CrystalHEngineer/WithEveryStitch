@@ -1,0 +1,6 @@
+package com.crystal.stitch.models;
+@Entity
+@Table(name="guests")
+public class guest {
+
+}

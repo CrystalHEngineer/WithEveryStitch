@@ -1,0 +1,7 @@
+package com.crystal.stitch.models;
+
+@Entity
+@Table(name="products")
+public class product {
+
+}
