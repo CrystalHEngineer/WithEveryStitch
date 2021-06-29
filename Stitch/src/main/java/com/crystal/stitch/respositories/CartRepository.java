@@ -1,5 +1,5 @@
 package com.crystal.stitch.respositories;
 
-public interface GuestRepository {
+public interface CartRepository {
 
 }

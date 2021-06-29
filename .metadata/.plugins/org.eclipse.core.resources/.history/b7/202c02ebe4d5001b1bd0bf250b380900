@@ -1,7 +1,0 @@
-package com.crystal.stitch.models;
-
-@Entity
-@Table(name="users")
-public class user {
-
-}

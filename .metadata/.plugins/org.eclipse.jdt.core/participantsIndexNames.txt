@@ -1,3 +1,0 @@
-INDEX VERSION 1.131
-C:\Users\cryst\Desktop\java\group_project\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\644020005.index
-\Stitch\src\main\java

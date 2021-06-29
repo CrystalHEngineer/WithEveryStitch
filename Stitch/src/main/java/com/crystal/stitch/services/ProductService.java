@@ -1,5 +1,5 @@
 package com.crystal.stitch.services;
 
-public interface ProductService {
+public class ProductService {
 
 }

@@ -1,5 +1,5 @@
 package com.crystal.stitch.respositories;
 
-public class ProductRepository {
+public interface ProductRepository extends CrudRepository<> {
 
 }

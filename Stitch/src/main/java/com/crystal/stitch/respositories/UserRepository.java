@@ -1,5 +1,5 @@
 package com.crystal.stitch.respositories;
 
-public class UserRepository {
+public interface UserRepository {
 
 }

@@ -1,5 +1,5 @@
 package com.crystal.stitch.services;
 
-public class GuestService {
+public class CartService {
 
 }
