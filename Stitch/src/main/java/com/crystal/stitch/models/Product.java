@@ -18,5 +18,5 @@ public class Product {
 	private Double price;
 	
 	
-	@ManyToMany
+//	@ManyToMany
 }
