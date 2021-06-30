@@ -6,10 +6,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="users")
-public class User {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
-}
+// @Entity
+// @Table(name="users")
+// public class User {
+// <<<<<<< terra
+
+//     @Id
+//     @GeneratedValue(strategy=GenerationType.IDENTITY)
+//     private Long id;
+	
+// =======
+// 	@Id
+// 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+// 	private Long id;
+// >>>>>>> main
+// }

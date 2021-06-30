@@ -130,4 +130,8 @@ public class Product {
 	
 	
 	
-}
+// <<<<<<< terra
+// //	@ManyToMany
+// =======
+// >>>>>>> main
+// }
