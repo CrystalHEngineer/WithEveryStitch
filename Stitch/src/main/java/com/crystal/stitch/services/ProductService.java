@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.crystal.stitch.models.Product;
-import com.crystal.stitch.models.User;
 import com.crystal.stitch.respositories.ProductRepository;
 
 @Service
@@ -19,6 +18,15 @@ public class ProductService {
 	public List<Product> getAllProducts(){
 		return this.pRepo.findAll();
 	}
+	
+//	public List<Product> getGender(String gender){
+//		return this.pRepo.findByGender(gender);
+//	}
+	
+	public List<Product> getGenderAndItem(String gender, String item){
+		return this.pRepo.findByGenderAndItem(gender, item);
+	}
+	
 	
 	public List<Product> getProducts(){
 		return this.pRepo.findAll();

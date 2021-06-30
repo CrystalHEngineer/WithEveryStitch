@@ -27,7 +27,7 @@ public class Product {
 	private String size;
 	private String description;
 	private Double price;
-	private String itemType;
+	private String item;
 	@DateTimeFormat(pattern = "yyyy-MM-DD HH:mm:ss")
 	private Date createdAt;
 	@DateTimeFormat(pattern = "yyyy-MM-DD HH:mm:ss")
@@ -109,13 +109,13 @@ public class Product {
 	}
 
 
-	public String getItemType() {
-		return itemType;
+	public String getItem() {
+		return item;
 	}
 
 
-	public void setItemType(String itemType) {
-		this.itemType = itemType;
+	public void setItem(String item) {
+		this.item = item;
 	}
 
 
