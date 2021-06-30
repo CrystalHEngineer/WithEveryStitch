@@ -24,6 +24,7 @@ public class ProductService {
 //	}
 	
 	public List<Product> getGenderAndItem(String gender, String item){
+		System.out.println(this.pRepo.findByGenderAndItem(gender, item));
 		return this.pRepo.findByGenderAndItem(gender, item);
 	}
 	
