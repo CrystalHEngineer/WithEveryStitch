@@ -6,8 +6,4 @@ import javax.persistence.Id;
 
 public class Cart {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
-	
 }

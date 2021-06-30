@@ -10,8 +10,5 @@ import javax.persistence.Table;
 @Table(name="guests")
 public class Guest {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
 	
 }
