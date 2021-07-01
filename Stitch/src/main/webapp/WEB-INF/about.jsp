@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1" name="viewport" content="width=device-width; initial-scale=1.0">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -29,9 +29,9 @@
 		<div class="about_item">
 			<mytags:sidebar/>
 		</div>
-		<img src="images/kisspng-woman-fashion-shopping-beauty.png" alt="model" width="275" height="413">
+		<img src="/images/kisspng-woman-fashion-shopping-beauty.png" alt="model" width="275" height="413">
 		<div class="about_item about_width background_gray font_size">
-			<p><span id="logo_font">With Every Stitch</span> is the brainchild of four software engineers (Alda, Cheng, Crystal, and Terra) who are committed to providing clothing that are exciting to wear.  
+			<p><span id="logo_font">With Every Stitch</span> is the brainchild of four software engineers (Adan, Cheng, Crystal, and Terra) who are committed to providing clothing that are exciting to wear.  
 				Clothing is an art form and nothing makes us happier than helping you create your masterpiece.</p>
 			<p>We offer a wide variety of high-quality custom apparel that can be personalized to suit your tastes. So, browse our collection, you won't be disappointed!</p>
 			<h1>Life is too short for boring clothes...</h1>
@@ -45,5 +45,5 @@
 
 </body>
 
-<script type = "text/javascript" src="javascript/script.js"></script>
+<script type = "text/javascript" src="/javascript/script.js"></script>
 

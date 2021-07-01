@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1" name="viewport" content="width=device-width; initial-scale=1.0">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -81,5 +81,5 @@
 
 </body>
 
-<script type = "text/javascript" src="javascript/script.js"></script>
+<script type = "text/javascript" src="/javascript/script.js"></script>
 

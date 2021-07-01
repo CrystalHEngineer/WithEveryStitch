@@ -10,10 +10,10 @@
     </div>
     <div class="item_top cust">
         <p><b>FOLLOW US ON:</b></p>
-        <img src="images/kisspng-facebook.png" alt="facebook" width="35" height="35">
-        <img src="images/kisspng-twitter.png" alt="twitter" width="35" height="35">
-        <img src="images/kisspng-pinterest.png" alt="pinterest" width="35" height="35">
-        <img src="images/kisspng-instagram.png" alt="instagram" width="35" height="35">
+        <img src="/images/kisspng-facebook.png" alt="facebook" width="35" height="35">
+        <img src="/images/kisspng-twitter.png" alt="twitter" width="35" height="35">
+        <img src="/images/kisspng-pinterest.png" alt="pinterest" width="35" height="35">
+        <img src="/images/kisspng-instagram.png" alt="instagram" width="35" height="35">
     </div>
 </div>
 

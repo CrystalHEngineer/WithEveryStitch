@@ -34,6 +34,6 @@ public class ProductController {
 			else if(categories.equals("wPants")) {
 				viewModel.addAttribute("product", this.pService.getGenderAndItem("womens", "pant"));
 				} 
-			return "products.jsp";
+			return "product.jsp";
 			} 
 }
