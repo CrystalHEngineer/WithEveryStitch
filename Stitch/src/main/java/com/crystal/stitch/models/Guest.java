@@ -11,7 +11,6 @@ import javax.validation.constraints.NotBlank;
 @Entity
 @Table(name="guests")
 public class Guest {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -54,9 +53,6 @@ public class Guest {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
-	
 	
 
 }
