@@ -31,6 +31,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<h1>Hello there!</h1>
+	
+	<c:forEach items="${product}" var="item">
+		<p>${item.gender} ${item.description} ${item.price} ${item.size}</p>
+	</c:forEach>
 	<mytags:navbar />
 
 	<mytags:sidebar />
