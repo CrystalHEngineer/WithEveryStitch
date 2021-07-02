@@ -23,7 +23,7 @@ public class ProductController {
 				viewModel.addAttribute("product", this.pService.getGenderAndItem("mens", "shirt"));
 				} 
 			else if(categories.equals("mPants")) {
-				viewModel.addAttribute("product", this.pService.getGenderAndItem("mens", "pants"));
+				viewModel.addAttribute("product", this.pService.getGenderAndItem("mens", "pant"));
 				} 
 			else if(categories.equals("wShirts")) {
 				viewModel.addAttribute("product", this.pService.getGenderAndItem("womens", "shirt"));

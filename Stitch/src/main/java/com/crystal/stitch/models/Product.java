@@ -24,10 +24,10 @@ public class Product {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String gender;
-	private String size;
 	private String description;
 	private Double price;
 	private String item;
+	private String img;
 	@DateTimeFormat(pattern = "yyyy-MM-DD HH:mm:ss")
 	private Date createdAt;
 	@DateTimeFormat(pattern = "yyyy-MM-DD HH:mm:ss")
@@ -79,16 +79,6 @@ public class Product {
 	}
 
 
-	public String getSize() {
-		return size;
-	}
-
-
-	public void setSize(String size) {
-		this.size = size;
-	}
-
-
 	public String getDescription() {
 		return description;
 	}
@@ -126,6 +116,30 @@ public class Product {
 
 	public void setCustomers(List<User> customers) {
 		this.customers = customers;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 	
 	
