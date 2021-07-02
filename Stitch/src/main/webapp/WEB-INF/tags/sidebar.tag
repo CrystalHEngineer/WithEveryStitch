@@ -3,11 +3,11 @@
 
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<a href="#"><b>MEN'S:</b></a>
+		<a href="javascript:void(0)"><b>MEN'S:</b></a>
 			<a href="/mPants">Pants</a>
 			<a href="/mShirts">Shirts</a>
 			<a href="/mJackets">Jackets</a>
-    	<a href="#"><b>WOMEN'S:</b></a>
+    	<a href="javascript:void(0)"><b>WOMEN'S:</b></a>
 			<a href="/wPants">Pants</a>
 			<a href="/wShirts">Shirts</a>
 			<a href="/wJackets">Jackets</a> 
