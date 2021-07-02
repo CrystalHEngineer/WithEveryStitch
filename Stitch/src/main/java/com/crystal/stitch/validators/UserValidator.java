@@ -1,11 +1,13 @@
 package com.crystal.stitch.validators;
 
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
-
 
 import com.crystal.stitch.models.User;
 import com.crystal.stitch.respositories.UserRepository;
 
+
+@Component
 public class UserValidator {
 	
 	private final UserRepository userRepo;
