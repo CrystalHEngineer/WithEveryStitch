@@ -192,3 +192,55 @@ hr {
 .card-img-top {
 	height: 200px;
 }
+
+/* ============================================ */
+/* cart  and receipt*/
+/* ============================================ */
+.cart_background{
+	background:#e0e0e0;
+
+	margin: 2% 0% 3% 0%;
+}
+
+.cart_container{
+	border: solid black 2px;
+	width: 90%;
+	height:700px;
+	background-image: radial-gradient(#8c8989, #837878,#6a6770);
+	display: inline-block;
+	margin-bottom:3%;
+	margin-left: 5%;
+}
+
+.cart_background h1{
+	padding: 2% 0%;
+	color:#130202;
+	font-weight:bold;
+	font-size: 300%;
+	    display: inline-block;
+    margin-left: 30%;
+}
+.cart_items{
+	border: solid black 2px;
+	width:100%;
+	height:75%;
+}
+.cart_total{
+	border: solid black 2px;
+    width: 50%;
+    height: 20%;
+    margin: 2% 0% 0% 40%;
+}
+.order_button{
+	
+	background-image: linear-gradient(#14c73d, #158b30, #10cb10);
+	border-radius:20px;
+	color:white;
+	padding: 2%;
+	font-size:180%;
+	margin-bottom:3%;
+	margin-left: 40%;
+	font-weight:bold;
+	
+}
+
