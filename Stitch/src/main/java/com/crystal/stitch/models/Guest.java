@@ -1,9 +1,14 @@
 package com.crystal.stitch.models;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -22,12 +27,12 @@ public class Guest {
 	@NotBlank
 	private String email;
 	
-	
+	@OneToMany(mappedBy="guest",
+			cascade=CascadeType.ALL,
+			fetch=FetchType.LAZY)
+	private List<Cart> carts;
 
-	public Guest(@NotBlank String name, @Email @NotBlank String email) {
-		
-		this.name = name;
-		this.email = email;
+	public Guest() {
 	}
 
 	public Long getId() {

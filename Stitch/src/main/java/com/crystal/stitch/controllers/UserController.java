@@ -27,7 +27,7 @@ public class UserController {
 		this.userVal = userVal;
 	}
 	
-	@RequestMapping("/guestpurchasepage")
+	@RequestMapping("/guestpurchase")
 	
 	public String guestdecidepage() {
 		
