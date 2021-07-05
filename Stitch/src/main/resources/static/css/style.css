@@ -218,7 +218,7 @@ hr {
 	font-weight:bold;
 	font-size: 300%;
 	    display: inline-block;
-    margin-left: 30%;
+    margin-left: 40%;
 }
 .cart_items{
 	border: solid black 2px;
@@ -243,4 +243,22 @@ hr {
 	font-weight:bold;
 	
 }
-
+#checkoutOptions{
+    display: inline-flex;
+    height: 100px;
+    justify-content: space-between;
+    width: 35%;
+    margin-left: 33%;
+    align-items: center;
+    text-align: center;
+	
+}
+#checkoutOptions a{
+	border:solid black 2px;
+	padding:2%;
+	background-image: linear-gradient(#007bff, #004a9b, #007bff);
+	font-weight:bold;
+	border-radius:20px;
+	color:white;
+	font-size:150%;
+}

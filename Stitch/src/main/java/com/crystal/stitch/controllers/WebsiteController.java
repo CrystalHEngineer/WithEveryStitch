@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.crystal.stitch.models.Cart;
 import com.crystal.stitch.models.Feedback;
 import com.crystal.stitch.models.Guest;
+import com.crystal.stitch.models.User;
 import com.crystal.stitch.services.CartService;
 import com.crystal.stitch.services.FeedbackService;
 import com.crystal.stitch.services.GuestService;
 import com.crystal.stitch.services.ProductService;
+import com.crystal.stitch.services.UserService;
 
 
 @Controller
@@ -31,53 +33,72 @@ public class WebsiteController {
 	 private CartService cartServ;
 	@Autowired
 	private GuestService guestServ;
+	@Autowired
+	private UserService uServ;
 	
 	@GetMapping("/")
 	public String displayLanding(HttpSession session, Model viewModel) {
 		
-		// i only have 1 "Customer" save in mysql table with an id 1 and guest as the name
-		// all guests will have an id of 1 when visiting the home page and their name will be displayed as Guest
+		if (session.getAttribute("theUserId") == null){	
 				
-		//this makes the first and only guest Object if DB is empty
-		Guest currentGuest= this.guestServ.getGuestId();
+			//this makes the first and only guest Object if DB is empty
+			Guest currentGuest= this.guestServ.getGuestId();
+			
 			if(currentGuest==null) {
 				Guest firstGuest = new Guest();
 				this.guestServ.saveFirstGuest(firstGuest);
 				return "redirect:/";
 			}
+			else {	
 				
-			//set a customer as a default guest in session
-			session.setAttribute("guest", currentGuest);
+				//set a customer as a default guest in session
+				session.setAttribute("guest", currentGuest);
 							
-			//checks if there is a cart in session,				
-		if(session.getAttribute("cart__id")==null){
-									
-			Cart newCart = new Cart();
+				//checks if there is a cart in session,				
+				if(session.getAttribute("cart__id")==null){
 					
-			//saves cart and saves it to the default guest 
-			this.cartServ.newCart(newCart, currentGuest);
+					Cart newCart = new Cart();
 					
-			//sets new cart id in session
-			session.setAttribute("cart__id", newCart.getId());
+					//saves cart and saves it to the default guest 
+					this.cartServ.newCart(newCart, currentGuest);
+					
+					//sets new cart id in session
+					session.setAttribute("cart__id", newCart.getId());
 				
-			return "redirect:/";
-			
+					return "redirect:/";
+				}
+				
+				//return "redirect:/";
 			}	
-						
-			//sets cart id in viewModel to have access to {cartId} in URLs 
-			viewModel.addAttribute("cart_id",session.getAttribute("cart__id"));
+							
+				///checks if current cart has been purchased
+				Long currentCartId = (Long) session.getAttribute("cart__id");
+				Cart currectCart = this.cartServ.findCartbyId(currentCartId);
 			
-			///checks if curret cart has been purchased
-			Long currentCartId = (Long) session.getAttribute("cart__id");
-			Cart currectCart = this.cartServ.findCartbyId(currentCartId);
+				//sets cart id in viewModel to have access to {cartId} in URLs 
+				viewModel.addAttribute("cart",this.cartServ.findCartbyId(currentCartId));
 			
-			if(currectCart.getOrder().equals("yes")) {
-				session.setAttribute("cart__id", null);
+				if(currectCart.getOrder().equals("yes")) {
+					session.setAttribute("cart__id", null);
 				
-				return "redirect:/";
-			}
+					return "redirect:/";
+				}
 			
+				return "index.jsp";
+		}
+		
+		else{
+			
+			Long currentUserId = (Long)session.getAttribute("theUserId");
+			User currentUser= this.uServ.findUserById(currentUserId);
+			viewModel.addAttribute("guest",currentUser);
+			// needed for navbar tag <c:choose>
+			viewModel.addAttribute("loginUser",currentUser);
+			Long currentCartId = (Long) session.getAttribute("cart__id");
+			viewModel.addAttribute("cart",this.cartServ.findCartbyId(currentCartId));				
 			return "index.jsp";
+		}
+	
 	}
 	
 	@GetMapping("/about")
@@ -100,6 +121,11 @@ public class WebsiteController {
 		}
 	}
 	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+	}
 	
 }
 

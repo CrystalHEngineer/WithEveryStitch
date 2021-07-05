@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.crystal.stitch.models.Cart;
 import com.crystal.stitch.models.CartItem;
 import com.crystal.stitch.models.Guest;
+import com.crystal.stitch.models.User;
 import com.crystal.stitch.services.CartItemService;
 import com.crystal.stitch.services.CartService;
 import com.crystal.stitch.services.GuestService;
+import com.crystal.stitch.services.UserService;
 
 @Controller
 public class CartController {
@@ -30,31 +32,49 @@ public class CartController {
 	@Autowired 
 	private CartItemService cItemServ;
 	
+	@Autowired
+	private UserService uServ;
+	
 	///shows cart
 	@GetMapping("/{guestId}/cart/{cartId}")
 	public String cart( @PathVariable("guestId") Long guestId, @PathVariable("cartId") Long cartId , @ModelAttribute("order") Cart cart,HttpSession session, Model viewModel)  {
-				
-		//this is need to get customer id for <a> tags and URLs 
-		Guest currentGuest= this.guestServ.getGuestId();		
-		viewModel.addAttribute("guest",currentGuest);
-				
-		//sets current cart id through session
-		Long currentCartId= (Long) session.getAttribute("cart__id");
-				
-		//need this to compare and validated
-		Cart currentCart = this.cartServ.findCartbyId(currentCartId);
-		Cart accessCart = this.cartServ.findCartbyId(cartId);				
-		//validates to check cart id to avoid URL manipulation
-		if(accessCart != currentCart) {
-			return "redirect:/"+currentGuest.getId()+"/"+currentCartId;
-		}
-		else {
-				// adds the cart object to viewModel, and will use a for loop to go over and display the items within the cart object  
-		viewModel.addAttribute("cart",this.cartServ.findCartbyId(currentCartId));		
-					
-				//System.out.println(currentCartId);
-		return "cart.jsp";	
+			
+		//sets current cart id through session			
+		Long currentCartId = (Long) session.getAttribute("cart__id");
+		viewModel.addAttribute("cart",this.cartServ.findCartbyId(currentCartId));
+		
+		if (session.getAttribute("theUserId") == null){	
+			
+			//this is need to get customer id for <a> tags and URLs 
+			Guest currentGuest= this.guestServ.getGuestId();		
+			viewModel.addAttribute("guest",currentGuest);
+			
+			//need this to compare and validated
+			Cart currentCart = this.cartServ.findCartbyId(currentCartId);
+			Cart accessCart = this.cartServ.findCartbyId(cartId);				
+			//validates to check cart id to avoid URL manipulation
+				if(accessCart != currentCart) {
+					return "redirect:/"+currentGuest.getId()+"/"+currentCartId;
 				}
+			return "cart.jsp";	
+		}
+		
+		else{
+			Long currentUserId = (Long)session.getAttribute("theUserId");
+			User currentUser= this.uServ.findUserById(currentUserId);
+			viewModel.addAttribute("guest",currentUser);
+			// needed for navbar tag <c:choose>
+			viewModel.addAttribute("loginUser",currentUser);						
+				//need this to compare and validated
+			Cart currentCart = this.cartServ.findCartbyId(currentCartId);
+			Cart accessCart = this.cartServ.findCartbyId(cartId);				
+			//validates to check cart id to avoid URL manipulation
+				if(accessCart != currentCart) {
+					return "redirect:/"+currentUser.getId()+"/cart/"+currentCartId;
+				}
+				return "cart.jsp";	
+		}						
+	
 	}
 			//adds products to cart and will also edit quantity and price
 	@PostMapping("/{guestId}/item/{productId}/add")
@@ -97,10 +117,34 @@ public class CartController {
 		Long currentGuestId= (Long)session.getAttribute("guest");
 				
 		return "redirect:/" + currentGuestId + "/cart";
-			}
+	}
+	
+	
+	@GetMapping("/{guestId}/cart/{cartId}/checkout")
+	public String cartCheckout( @PathVariable("guestId") Long guestId, @PathVariable("cartId") Long cartId , @ModelAttribute("order") Cart cart,HttpSession session, Model viewModel)  {
+				
+		//this is need to get customer id for <a> tags and URLs 
+		Guest currentGuest= this.guestServ.getGuestId();		
+		viewModel.addAttribute("guest",currentGuest);
+				
+		//sets current cart id through session
+		Long currentCartId= (Long) session.getAttribute("cart__id");
+		viewModel.addAttribute("cart",this.cartServ.findCartbyId(currentCartId));		
+		
+		//need this to compare and validated
+		Cart currentCart = this.cartServ.findCartbyId(currentCartId);
+		Cart accessCart = this.cartServ.findCartbyId(cartId);				
+		//validates to check cart id to avoid URL manipulation
+		if(accessCart != currentCart) {
+			return "redirect:/"+currentGuest.getId()+"/"+currentCartId;
+		}
+		else {			
+		
+		return "orderReview.jsp";	
+				}
+	}
 			
-			
-	@PostMapping("/{guestId}/{cartId}/purchase")
+	@PostMapping("/{guestId}/cart/{cartId}/purchase")
 	public String purchaseProductsi(@ModelAttribute("order") Cart cart, @PathVariable("guestId") Long guestId,  @PathVariable("cartId") Long cartId, HttpSession session, Model viewModel) {
 					
 		Guest guest = (Guest) session.getAttribute("guest");

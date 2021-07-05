@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,23 +47,23 @@ public class UserController {
 			User theUser = this.userSer.findUserByEmail(inputemail);
 			Long theUserId = theUser.getId();
 			session.setAttribute("theUserId", theUserId);
-			
-			return "cart.jsp";
+			Long currentCartId = (Long) session.getAttribute("cart__id");
+			return "redirect:/" + theUserId + "/cart/" + currentCartId;
 				
 		}
 		
 		else {
 			
 			redirectAttributes.addFlashAttribute("logerror", "Please enter valid email or password");
-			return "redirect:/guestpurchasepage";
+			return "redirect:/registerpage";
 			
 		}
 	}
 	
 	@RequestMapping("/registerpage")
-	public String userRegister(@ModelAttribute("newuser") User newuser) {
-		
-		
+	public String userRegister(@ModelAttribute("newuser") User newuser, HttpSession session, Model viewModel) {
+		Long currentCartId = (Long) session.getAttribute("cart__id");
+		viewModel.addAttribute("cart_id",currentCartId);
 		return "register.jsp";
 		
 	}
@@ -86,8 +87,9 @@ public class UserController {
 			Long theUserId = newUser.getId();
 			session.setAttribute("theUserId", theUserId);
 			
+			Long currentCartId = (Long) session.getAttribute("cart__id");
 			//System.out.println("good to go");
-			return "redirect:/guestpurchasepage";
+			return "redirect:/" + theUserId + "/cart/" + currentCartId;
 			
 		}
 		
