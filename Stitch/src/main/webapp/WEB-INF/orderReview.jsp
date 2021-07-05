@@ -39,13 +39,13 @@
 	<mytags:sidebar/>
 	
 	<div class="cart_background">
-		<h1>Currently in your Cart</h1>
+		<h1>Your Order</h1>
 		<div class="cart_container">
 			<div class="cart_items">
 			<ul>
 				<c:forEach items="${cart.cartItems}" var="cartItem">			
 					<li>
-						${cartItem.product.name} ${cartItem.quantity}									
+						${cartItem.quantity} ${cartItem.product.item} ${cartItem.price}									
 						<a href="/${guest.id}/item/${cartItem.product.id}">Edit Quantity</a>	
 						<a href="/${guest.id}/item/${cartItem.product.id}/remove">Remove</a>					
 					</li>	
@@ -58,20 +58,10 @@
 			</div>
 
 		</div>
-		<c:choose>	
-			<c:when test="${loginUser == null}">
-				<div id="checkoutOptions">
-					<a href="/${guest.id}/cart/${cart.id}/checkout/">Continue as Guest</a>
-					<a href="/registerpage">Log in/Register</a>
-				</div>
-			</c:when>	
-			<c:otherwise>
-				<form:form action="/${guest.id}/cart/${cart.id}/purchase" method="post" modelAttribute ="order" >
-					<form:button class="order_button">Submit Order</form:button>
-				</form:form>
-			</c:otherwise>
-		</c:choose>
 		
+		<form:form action="/${guest.id}/cart/${cart.id}/purchase" method="post" modelAttribute ="order" >
+			<form:button class="order_button">Submit Order</form:button>
+		</form:form>
 	</div>	
 			
 	<mytags:footer/>
