@@ -3,6 +3,10 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+* {
+	font-family: "Benne", sans-serif;
+	font-weight: bold;
+}
 
 /* ============================================ */
 /* Container 1 */
@@ -187,10 +191,16 @@ hr {
 
 .card {
 	display: inline-block;
+	margin-left: 250px;
+    margin-bottom: 20px;
 }
 
 .card-img-top {
 	height: 200px;
+}
+
+.card h5 {
+    font-size: 1.75rem;
 }
 
 /* ============================================ */
@@ -200,6 +210,8 @@ hr {
 	background:#e0e0e0;
 
 	margin: 2% 0% 3% 0%;
+	margin-left: 275px;
+    margin-right: 275px;
 }
 
 .cart_container{

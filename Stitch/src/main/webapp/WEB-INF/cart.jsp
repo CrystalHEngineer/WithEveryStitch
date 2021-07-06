@@ -39,7 +39,7 @@
 	<mytags:sidebar/>
 	
 	<div class="cart_background">
-		<h1>Currently in your Cart</h1>
+		<h1>Currently In Your Cart</h1>
 		<div class="cart_container">
 			<div class="cart_items">
 			<ul>
@@ -53,16 +53,16 @@
 			</ul>
 			</div>
 			<div class="cart_total">
-				<h2>SubTotal</h2>
-				<h2>Total</h2>
+				<h2>SubTotal:</h2>
+				<h2>Total:</h2>
 			</div>
 
 		</div>
 		<c:choose>	
 			<c:when test="${loginUser == null}">
 				<div id="checkoutOptions">
-					<a href="/${guest.id}/cart/${cart.id}/checkout/">Continue as Guest</a>
-					<a href="/registerpage">Log in/Register</a>
+					<a href="/${guest.id}/cart/${cart.id}/checkout/">Continue As Guest</a>
+					<a href="/registerpage">Log In/Register</a>
 				</div>
 			</c:when>	
 			<c:otherwise>
