@@ -55,4 +55,6 @@ public class ProductController {
 				} 
 			return "product.jsp";
 			} 
+	
+//	@GetMapping("/{categories}/{")
 }
