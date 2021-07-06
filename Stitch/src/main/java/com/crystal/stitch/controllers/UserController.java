@@ -3,6 +3,7 @@ package com.crystal.stitch.controllers;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,11 +14,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.crystal.stitch.validators.UserValidator;
+import com.crystal.stitch.models.Cart;
+import com.crystal.stitch.models.Guest;
 import com.crystal.stitch.models.User;
+import com.crystal.stitch.services.CartService;
+import com.crystal.stitch.services.GuestService;
 import com.crystal.stitch.services.UserService;
 
 @Controller
 public class UserController {
+	
+	@Autowired
+	private CartService cartServ;
+	
+	@Autowired
+	private GuestService guestServ;
+	
 	
 	private final UserService userSer;
 	private final UserValidator userVal;
@@ -49,6 +61,7 @@ public class UserController {
 			session.setAttribute("theUserId", theUserId);
 			Long currentCartId = (Long) session.getAttribute("cart__id");
 			return "redirect:/" + theUserId + "/cart/" + currentCartId;
+			
 				
 		}
 		
@@ -63,8 +76,25 @@ public class UserController {
 	@RequestMapping("/registerpage")
 	public String userRegister(@ModelAttribute("newuser") User newuser, HttpSession session, Model viewModel) {
 		Long currentCartId = (Long) session.getAttribute("cart__id");
+		Cart currentCart = this.cartServ.findCartbyId(currentCartId);
+		viewModel.addAttribute("cart",currentCart);
 		viewModel.addAttribute("cart_id",currentCartId);
-		return "register.jsp";
+		
+		if (session.getAttribute("theUserId") == null){
+			Guest currentGuest= this.guestServ.getGuestId();
+			viewModel.addAttribute("guest",currentGuest);
+			
+			return "register.jsp";
+		}
+		else {
+			Long currentUserId = (Long) session.getAttribute("theUserId");
+			User currentUser = this.userSer.findUserById(currentUserId);
+			viewModel.addAttribute("guest", currentUser);
+				
+		
+			return "register.jsp";
+		}
+
 		
 	}
 	

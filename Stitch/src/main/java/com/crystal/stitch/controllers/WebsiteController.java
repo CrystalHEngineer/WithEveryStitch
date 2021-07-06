@@ -102,13 +102,43 @@ public class WebsiteController {
 	}
 	
 	@GetMapping("/about")
-	public String about() {
-		return "about.jsp";
+	public String about(HttpSession session, Model viewModel) {
+		Long currentCartId = (Long) session.getAttribute("cart__id");
+		viewModel.addAttribute("cart",this.cartServ.findCartbyId(currentCartId));				
+		
+		if (session.getAttribute("theUserId") == null){
+			Guest currentGuest= this.guestServ.getGuestId();
+			viewModel.addAttribute("guest",currentGuest);
+						
+			return "about.jsp";
+		}
+		else {
+			Long currentUserId = (Long) session.getAttribute("theUserId");
+			User currentUser = this.uServ.findUserById(currentUserId);
+			viewModel.addAttribute("guest", currentUser);		
+		
+			return "about.jsp";
+		}		
 	}	
 
 	@GetMapping("/contact")
-	public String contact(@ModelAttribute("feedback") Feedback feedback) {	
-		return "contact.jsp";
+	public String contact(@ModelAttribute("feedback") Feedback feedback,HttpSession session, Model viewModel) {
+		Long currentCartId = (Long) session.getAttribute("cart__id");
+		viewModel.addAttribute("cart",this.cartServ.findCartbyId(currentCartId));				
+		
+		if (session.getAttribute("theUserId") == null){
+			Guest currentGuest= this.guestServ.getGuestId();
+			viewModel.addAttribute("guest",currentGuest);
+						
+			return "contact.jsp";
+		}
+		else {
+			Long currentUserId = (Long) session.getAttribute("theUserId");
+			User currentUser = this.uServ.findUserById(currentUserId);
+			viewModel.addAttribute("guest", currentUser);		
+		
+			return "contact.jsp";
+		}				
 	}
 
 	@PostMapping("/contact/new")
