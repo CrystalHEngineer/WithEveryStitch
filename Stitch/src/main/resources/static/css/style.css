@@ -193,6 +193,7 @@ hr {
 	display: inline-block;
 	margin-left: 250px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .card-img-top {
@@ -203,6 +204,11 @@ hr {
     font-size: 1.75rem;
 }
 
+
+.btn-primary {
+	background-color: #0056b3;
+	border-color: #0056b3; 
+}
 /* ============================================ */
 /* cart  and receipt*/
 /* ============================================ */
@@ -212,16 +218,16 @@ hr {
 	margin: 2% 0% 3% 0%;
 	margin-left: 275px;
     margin-right: 275px;
+    text-align: center;
 }
 
 .cart_container{
 	border: solid black 2px;
 	width: 90%;
 	height:700px;
-	background-image: radial-gradient(#8c8989, #837878,#6a6770);
+	background-image: #fff;
 	display: inline-block;
 	margin-bottom:3%;
-	margin-left: 5%;
 }
 
 .cart_background h1{
@@ -229,19 +235,24 @@ hr {
 	color:#130202;
 	font-weight:bold;
 	font-size: 300%;
-	    display: inline-block;
-    margin-left: 40%;
+	display: inline-block;
+}
+
+.cart_background hr{
+	background-color: black;
 }
 .cart_items{
-	border: solid black 2px;
 	width:100%;
 	height:75%;
 }
 .cart_total{
-	border: solid black 2px;
     width: 50%;
     height: 20%;
     margin: 2% 0% 0% 40%;
+}
+
+.cart_total h2{
+	font-weight: bold;
 }
 .order_button{
 	
@@ -256,21 +267,17 @@ hr {
 	
 }
 #checkoutOptions{
-    display: inline-flex;
     height: 100px;
-    justify-content: space-between;
-    width: 35%;
+    width: 40%;
     margin-left: 33%;
     align-items: center;
     text-align: center;
-	
 }
 #checkoutOptions a{
-	border:solid black 2px;
 	padding:2%;
-	background-image: linear-gradient(#007bff, #004a9b, #007bff);
-	font-weight:bold;
-	border-radius:20px;
-	color:white;
+	background-color: #0056b3;
+	font-weight: 200px;
+	border-radius:10px;
+	color: #fff;
 	font-size:150%;
 }

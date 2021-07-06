@@ -45,7 +45,7 @@
 				<div class="card" style="width: 18rem;">
 					<img src="images/${item.img}" class="card-img-top" alt="man_shirt">
 					<div class="card-body">
-						<h5 class="card-title">${item.gender} ${item.item}</h5>
+						<h5 class="card-title">${item.gender} ${item.item}     $${item.price}</h5>
 						<a href="#" class="btn btn-primary">Product Details</a>
 					</div>
 				</div>
