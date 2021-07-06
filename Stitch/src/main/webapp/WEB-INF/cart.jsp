@@ -52,6 +52,7 @@
 				</c:forEach>
 			</ul>
 			</div>
+			<hr>
 			<div class="cart_total">
 				<h2>SubTotal:</h2>
 				<h2>Total:</h2>
