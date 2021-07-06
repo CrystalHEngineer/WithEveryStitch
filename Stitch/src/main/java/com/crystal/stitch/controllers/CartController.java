@@ -76,7 +76,7 @@ public class CartController {
 		}						
 	
 	}
-			//adds products to cart and will also edit quantity and price
+		//adds products to cart and will also edit quantity and price
 	@PostMapping("/{guestId}/item/{productId}/add")
 	public String addProductToCart(@ModelAttribute("newCartItem") CartItem newCartItem, BindingResult result,@PathVariable("guestId") Long guestId, @PathVariable("productId") Long productId, HttpSession session,Model viewModel) {	
 				
