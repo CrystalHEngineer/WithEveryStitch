@@ -1,5 +1,7 @@
 package com.crystal.stitch.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +44,8 @@ public class CartController {
 		//sets current cart id through session			
 		Long currentCartId = (Long) session.getAttribute("cart__id");
 		viewModel.addAttribute("cart",this.cartServ.findCartbyId(currentCartId));
-		
+
+		//checks if its a login user
 		if (session.getAttribute("theUserId") == null){	
 			
 			//this is need to get customer id for <a> tags and URLs 
@@ -96,7 +99,7 @@ public class CartController {
 				//to get customer id for redirect
 		Guest guest = (Guest) session.getAttribute("guest");
 				
-		return "redirect:/"+guest.getId()+"/cart";		
+		return "redirect:/"+guest.getId()+"/cart/" + currentCartId;		
 				
 	}	
 			
@@ -105,18 +108,18 @@ public class CartController {
 	@GetMapping("{guestId}/item/{productId}/remove")
 	public String removeProductsFromCart( @PathVariable("guestId") Long guestId , @PathVariable("productId") Long productId, HttpSession session, Model viewModel) {		
 				
-				//gets cart 
+				
+		//gets current customer in order to redirect to cart URL
+		Long currentGuestId= guestId;
+
+		//gets cart from session
 		Long currentCartId = (Long) session.getAttribute("cart__id");
-		Cart currentCart= this.cartServ.findCartbyId(currentCartId);
-				
-				
-				//calls service to delete product	
+		Cart currentCart= this.cartServ.findCartbyId(currentCartId);				
+
+			//calls service to delete product	
 		this.cItemServ.removeProduct(productId, currentCart);
-				
-				//gets current customer in order to redirect to cart 
-		Long currentGuestId= (Long)session.getAttribute("guest");
-				
-		return "redirect:/" + currentGuestId + "/cart";
+			
+		return "redirect:/" + currentGuestId + "/cart/" + currentCartId;
 	}
 	
 	

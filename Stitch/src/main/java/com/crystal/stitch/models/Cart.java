@@ -29,7 +29,7 @@ public class Cart {
 	private Long id;
 	
 	private String total;
-	
+	 
 	
 	@Column(name ="order_status")
 	private String Order;

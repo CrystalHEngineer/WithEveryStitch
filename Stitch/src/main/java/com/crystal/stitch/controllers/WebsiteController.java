@@ -53,7 +53,7 @@ public class WebsiteController {
 				
 				//set a customer as a default guest in session
 				session.setAttribute("guest", currentGuest);
-							
+			
 				//checks if there is a cart in session,				
 				if(session.getAttribute("cart__id")==null){
 					
@@ -68,7 +68,7 @@ public class WebsiteController {
 					return "redirect:/";
 				}
 				
-				//return "redirect:/";
+		
 			}	
 							
 				///checks if current cart has been purchased

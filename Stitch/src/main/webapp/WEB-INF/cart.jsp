@@ -45,8 +45,8 @@
 			<ul>
 				<c:forEach items="${cart.cartItems}" var="cartItem">			
 					<li>
-						${cartItem.product.name} ${cartItem.quantity} ${cartItem.price}									
-						<a href="/${guest.id}/item/${cartItem.product.id}">Edit Quantity</a>	
+						 ${cartItem.quantity} 								
+						<a href="/${guest.id}/item/${cartItem.product.id}/add">Edit Quantity</a>	
 						<a href="/${guest.id}/item/${cartItem.product.id}/remove">Remove</a>					
 					</li>	
 				</c:forEach>
