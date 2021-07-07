@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.crystal.stitch.models.Guest;
 import com.crystal.stitch.models.Product;
 import com.crystal.stitch.models.User;
 import com.crystal.stitch.services.CartService;
@@ -58,9 +59,11 @@ public class ProductController {
 			} 
 	
 	@GetMapping("/product/{id}")
-	public String showProduct(@PathVariable("id") Long id, Model viewModel) {
+	public String showProduct(@PathVariable("id") Long id, Model viewModel, HttpSession session) {
 		Product productToShowcase = this.pService.getSingleProduct(id);
 		viewModel.addAttribute("item", productToShowcase);
+		Guest currentGuest = (Guest) session.getAttribute("guest");
+		viewModel.addAttribute("guest", currentGuest);
 		return "details.jsp";
 	}
 }

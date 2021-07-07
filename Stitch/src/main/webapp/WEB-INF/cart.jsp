@@ -62,8 +62,8 @@
 		<c:choose>	
 			<c:when test="${loginUser == null}">
 				<div id="checkoutOptions">
-					<a href="/${guest.id}/cart/${cart.id}/checkout/">Continue As Guest</a>
-					<a href="/registerpage">Log In/Register</a>
+					<a href="/${guest.id}/cart/${cart.id}/checkout/" class="btn1">Continue As Guest</a>
+					<a href="/registerpage" class="btn1">Log In/Register</a>
 				</div>
 			</c:when>	
 			<c:otherwise>
