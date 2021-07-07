@@ -9,8 +9,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach items="${product}" var="item">
-				
-			</c:forEach>
+	<div class="container">
+		<p>${item.img}</p>
+		<p>${item.description}</p>
+		<p>${item.price}</p>
+		<p>Hi there!</p>
+	</div>
 </body>
 </html>

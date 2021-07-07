@@ -39,19 +39,14 @@ public class CartItemService {
 			
 			cartItem.setQuantity(newQuantity);
 			
-			Double newPrice = cartItem.getPrice() * cartItem.getQuantity();
-			
-			cartItem.setPrice(newPrice);
+//			Double newPrice = cartItem.getPrice() * cartItem.getQuantity();
+//			
+//			cartItem.setPrice(newPrice);
 		}
 		
 		else {
 			cartItem = new CartItem();
 			cartItem.setQuantity(quantity);
-			cartItem.setGender(product.getGender());
-			cartItem.setDescription(product.getDescription());
-			cartItem.setPrice(product.getPrice() * quantity);
-			cartItem.setItem(product.getItem());
-			cartItem.setImg(product.getImg());
 			cartItem.setCart(cart);
 			cartItem.setProduct(product);
 		}		

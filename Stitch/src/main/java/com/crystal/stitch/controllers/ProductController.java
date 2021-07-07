@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.crystal.stitch.models.Product;
 import com.crystal.stitch.models.User;
 import com.crystal.stitch.services.CartService;
 import com.crystal.stitch.services.ProductService;
@@ -25,7 +26,7 @@ public class ProductController {
 	@GetMapping("/{categories}")
 	public String products(@PathVariable("categories") String categories, Model viewModel, HttpSession session) {
 		
-		// needed for navbar tag <c:choose>
+//		 needed for navbar tag <c:choose>
 		Long currentUserId = (Long)session.getAttribute("theUserId");
 		User currentUser= this.uServ.findUserById(currentUserId);
 		viewModel.addAttribute("guest",currentUser);
@@ -56,5 +57,10 @@ public class ProductController {
 			return "product.jsp";
 			} 
 	
-//	@GetMapping("/{categories}/{")
+	@GetMapping("/product/{id}")
+	public String showProduct(@PathVariable("id") Long id, Model viewModel) {
+		Product productToShowcase = this.pService.getSingleProduct(id);
+		viewModel.addAttribute("item", productToShowcase);
+		return "details.jsp";
+	}
 }

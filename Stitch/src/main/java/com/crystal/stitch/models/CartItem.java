@@ -28,18 +28,13 @@ public class CartItem {
 	private Long id;
 	
 	private Long quantity;
-	
-	private String gender;
-	
-	private String description;
-	
-	private Double price;
-	
-	private String item;
-	
-	private String img;
+
+	private String size;
 	
 	
+	
+	
+
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="product_id")
 	private Product product;
@@ -62,6 +57,13 @@ public class CartItem {
 	@PreUpdate
 	protected void onUpdate() {
 		this.updatedAt= new Date(); 
+	}
+	
+	public String getSize() {
+		return size;
+	}
+	public void setSize(String size) {
+		this.size = size;
 	}
 	
 	//construct
@@ -118,37 +120,6 @@ public class CartItem {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public Double getPrice() {
-		return price;
-	}
-	public void setPrice(Double price) {
-		this.price = price;
-	}
-	public String getItem() {
-		return item;
-	}
-	public void setItem(String item) {
-		this.item = item;
-	}
-	public String getImg() {
-		return img;
-	}
-	public void setImg(String img) {
-		this.img = img;
-	}
- 	
 }
 
 

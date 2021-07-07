@@ -191,7 +191,8 @@ hr {
 
 .card {
 	display: inline-block;
-	margin-left: 250px;
+	display: -ms-flexbox;
+	margin-left: 80px;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -208,6 +209,12 @@ hr {
 .btn-primary {
 	background-color: #0056b3;
 	border-color: #0056b3; 
+}
+
+.catalog_container {
+	width: 1175px;
+	height: 700px;
+	margin-left: 175px;
 }
 /* ============================================ */
 /* cart  and receipt*/
