@@ -60,6 +60,7 @@ public class ProductController {
 	
 	@GetMapping("/product/{id}")
 	public String showProduct(@PathVariable("id") Long id, Model viewModel, HttpSession session) {
+		System.out.println("The product page.");
 		Product productToShowcase = this.pService.getSingleProduct(id);
 		viewModel.addAttribute("item", productToShowcase);
 		Guest currentGuest = (Guest) session.getAttribute("guest");
