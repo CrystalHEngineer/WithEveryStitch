@@ -39,7 +39,7 @@
 		</div>
 
 		<div class="catalog_container">
-			<form action="/${guest.id}/add" method="POST">
+			<form action="/${guest.id}/item/${item.id}/add" method="POST">
 				<p>${guest.id}</p>
 				<img src="/images/${item.img}" alt="clothing">
 				<p>$${item.price}</p>

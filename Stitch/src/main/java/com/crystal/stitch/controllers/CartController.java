@@ -38,7 +38,7 @@ public class CartController {
 	///shows cart
 	@GetMapping("/{guestId}/cart/{cartId}")
 	public String cart( @PathVariable("guestId") Long guestId, @PathVariable("cartId") Long cartId , @ModelAttribute("order") Cart cart,HttpSession session, Model viewModel)  {
-			
+			System.out.println("Moving to the cart.");
 		//sets current cart id through session			
 		Long currentCartId = (Long) session.getAttribute("cart__id");
 		viewModel.addAttribute("cart",this.cartServ.findCartbyId(currentCartId));
@@ -80,7 +80,7 @@ public class CartController {
 	@PostMapping("/{guestId}/item/{productId}/add")
 	public String addProductToCart(@ModelAttribute("newCartItem") CartItem newCartItem, BindingResult result,@PathVariable("guestId") Long guestId, @PathVariable("productId") Long productId, HttpSession session,Model viewModel) {	
 				
-				
+				System.out.println("Added to the cart.");
 				// gets cart from session
 		Long currentCartId = (Long) session.getAttribute("cart__id");
 				
