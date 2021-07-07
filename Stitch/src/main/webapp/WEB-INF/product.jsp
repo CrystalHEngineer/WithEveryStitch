@@ -8,12 +8,12 @@
 <head>
 <meta charset="ISO-8859-1" name="viewport"
 	content="width=device-width; initial-scale=1.0">
-<link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/style.css" />
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
 	crossorigin="anonymous">
+<link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/style.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -46,7 +46,7 @@
 					<img src="images/${item.img}" class="card-img-top" alt="man_shirt">
 					<div class="card-body">
 						<h5 class="card-title">${item.gender} ${item.item}     $${item.price}</h5>
-						<a href="#" class="btn btn-primary">Product Details</a>
+						<a href="/product/${item.id}" class="btn btn-primary">Product Details</a>
 					</div>
 				</div>
 			</c:forEach>
