@@ -62,13 +62,13 @@
 		<c:choose>	
 			<c:when test="${loginUser == null}">
 				<div id="checkoutOptions">
-					<a href="/${guest.id}/cart/${cart.id}/checkout/" class="btn1">Continue As Guest</a>
-					<a href="/registerpage" class="btn1">Log In/Register</a>
+					<a href="/${guest.id}/cart/${cart.id}/checkout/"  class="btn btn-dark">Continue As Guest</a>
+					<a href="/registerpage"  class="btn btn-dark">Log In/Register</a>
 				</div>
 			</c:when>	
 			<c:otherwise>
 				<form:form action="/${guest.id}/cart/${cart.id}/purchase" method="post" modelAttribute ="order" >
-					<form:button class="order_button">Submit Order</form:button>
+					<form:button class="btn btn-dark">Submit Order</form:button>
 				</form:form>
 			</c:otherwise>
 		</c:choose>
