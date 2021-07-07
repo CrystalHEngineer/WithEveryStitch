@@ -7,8 +7,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1" name="viewport" content="width=device-width; initial-scale=1.0">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,12 +57,12 @@
             <div class="item_top">
                 <img class="img-fluid" src="/images/5_woman-5611028_1920.jpg" alt="model" width="192" height="240">
                 <h4>BOHO CHIC</h4>
-                <a class="btn btn-outline-dark" href="/wShirts">SHOP WOMEN'S SHIRTS</a>
+                <a class="btn2" href="/wShirts">SHOP WOMEN'S SHIRTS</a>
                 <br/>
 
                 <img class="img-fluid" src="/images/6_man-2792505_1920.jpg" alt="model" width="160" height="240">
                 <h4>WEEKEND CASUAL</h4>
-                <a class="btn btn-outline-dark" href="/mShirts">SHOP MEN'S SHIRTS</a>
+                <a class="btn2" href="/mShirts">SHOP MEN'S SHIRTS</a>
                 <br/>
             </div>
 
