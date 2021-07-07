@@ -55,7 +55,7 @@
 				<label for="size_id">Size</label><br>
 				<select name="size_id">
 					<option class="form-control" disabled selected value="">Select Size</option>
-						<c:forEach items="${product.sizes}" var="size">
+						<c:forEach items="${item.sizes}" var="size">
 							<option class="form-control" value="${size.id}">${size.size}</option>
 						</c:forEach>
 				</select>
