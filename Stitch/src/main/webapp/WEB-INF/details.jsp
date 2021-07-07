@@ -41,7 +41,7 @@
 		<div class="catalog_container">
 			<form action="/${guest.id}/add" method="POST">
 				<p>${guest.id}</p>
-				<img src="/images/${item.img}" alt="clothing">
+				<img class="prod_img" width="300px" height="300px" src="/images/${item.img}" alt="clothing">
 				<p>$${item.price}</p>
 				<p>${item.description}</p>
 				<div>
@@ -49,7 +49,20 @@
 					<input type="number" min="1" value="1" name="quantity" />
 				</div>
 				<input type="hidden" name="itemid" value="${item.id}" />
-				<button class="btn btn-primary" type="submit">Add To Cart</button>
+				
+				<br/>
+				
+				<label for="size_id">Size</label><br>
+				<select name="size_id">
+					<option class="form-control" disabled selected value="">Select Size</option>
+						<c:forEach items="${product.sizes}" var="size">
+							<option class="form-control" value="${size.id}">${size.size}</option>
+						</c:forEach>
+				</select>
+
+				<br/><br/>				
+				
+				<button class="btn btn-dark" type="submit">Add To Cart</button>
 			</form>
 
 

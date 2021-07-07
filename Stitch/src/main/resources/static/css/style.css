@@ -206,25 +206,6 @@ hr {
 }
 
 
-.btn {
-	background-color: #4b4f4f;
-    border-color: #b2a5a5;
-    border-width: medium;
-}
-
-.btn1 {
-	background-color: #4b4f4f;
-    border-color: #b2a5a5;
-    border-width: medium;
-}
-
-.btn2 {
-	background-color: #4b4f4f;
-    border-color: #b2a5a5;
-    border-width: medium;
-    color: #fff;
-}
-
 .catalog_container {
 	width: 1175px;
 	height: 700px;
@@ -303,3 +284,12 @@ hr {
 	color: #fff;
 	font-size:150%;
 }
+
+
+/* ============================================ */
+/* product details*/
+/* ============================================ */
+
+.prod_img {
+	max-width: 100%;
+  	height: auto;

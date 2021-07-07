@@ -43,10 +43,10 @@
 
 
 				<div class="card" style="width: 18rem;">
-					<img src="images/${item.img}" class="card-img-top" alt="man_shirt">
+					<img src="/images/${item.img}" class="card-img-top" alt="man_shirt">
 					<div class="card-body">
 						<h5 class="card-title">${item.gender} ${item.item}     $${item.price}</h5>
-						<a href="/product/${item.id}" class="btn btn-primary">Product Details</a>
+						<a href="/product/${item.id}" class="btn btn-dark">Product Details</a>
 					</div>
 				</div>
 			</c:forEach>

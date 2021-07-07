@@ -51,6 +51,15 @@ public class Product {
 			fetch=FetchType.LAZY)
 	private List<CartItem> cartItems;
 
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(
+		name="product_sizes",
+		joinColumns = @JoinColumn(name="product_id"),
+		inverseJoinColumns = @JoinColumn(name="size_id")
+	)
+	private List<Size> sizes;	
+	
 	public Product() {
 	
 	}
@@ -149,6 +158,12 @@ public class Product {
 		this.updatedAt = updatedAt;
 	}
 	
-	
+	public List<Size> getSizes() {
+		return sizes;
+	}
+
+	public void setSizes(List<Size> sizes) {
+		this.sizes = sizes;
+	}	
 	
 }
