@@ -49,12 +49,17 @@
 						<p class="price">$${item.price}</p>
 						<p>${item.description}</p>
 						<div>
-							<label>Quantity: </label> <input type="number" min="1" value="1"
-								name="quantity" />
+						 <label>Quantity: </label> <input type="number" min="1" value="1" name="quantity" class="quantitydetails"/> <select name="size_id">
+							<option class="form-control" disabled selected value="">Select Size</option> 
+							<option class="form-control" value="size">Small</option>
+							<option class="form-control" value="size">Medium</option>
+							<option class="form-control" value="size">Large</option>
+						</select> 
 						</div>
 						<input type="hidden" name="itemid" value="${item.id}" />
 						<button class="btn btn-primary" type="submit">Add To Cart</button>
 					</div>
+
 				</div>
 			</form>
 

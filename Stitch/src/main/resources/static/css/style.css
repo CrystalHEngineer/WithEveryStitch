@@ -240,7 +240,7 @@ hr {
 }
 
 .detailsdesc {
-	margin-left: 190px;
+	margin-left: 100px;
 	font-size: 22px;
 }
 
@@ -251,6 +251,10 @@ hr {
 
 .price {
 	font-size: 30px;
+}
+
+.quantitydetails {
+	width: 50px;
 }
 /* ============================================ */
 /* cart  and receipt*/
