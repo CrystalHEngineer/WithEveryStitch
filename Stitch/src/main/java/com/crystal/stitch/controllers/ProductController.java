@@ -62,8 +62,9 @@ public class ProductController {
 	
 	@GetMapping("/product/{id}")
 	public String showProduct(@PathVariable("id") Long id, Model viewModel, HttpSession session, @ModelAttribute("newCartItem") CartItem newCartItem) {
+		
+		//System.out.println("In the cart.");
 		//need for cart URL 
-		System.out.println("In the cart.");
 		Long currentUserId = (Long)session.getAttribute("theUserId");
 		User currentUser= this.uServ.findUserById(currentUserId);
 		viewModel.addAttribute("guest",currentUser);		
