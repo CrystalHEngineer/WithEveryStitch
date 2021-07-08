@@ -51,53 +51,54 @@
             </div>
         </div>
         <!-- <div class = "container2"> -->
-			<h1>Hello Guest</h1>
+			
 				<div class = "form-group">
 				<p>${regerror}</p>
 				
 				<h3>Register</h3>
-				<form:form action = "/registuser" method = "post" modelAttribute ="newuser">
+				<form:form class="col-sm-3 col-form-label" action = "/registuser" method = "post" modelAttribute ="newuser">
 					<p>
 						<form:label path = "name">Name:</form:label>
 						<form:errors path="name"/>
-						<form:input path="name"/>
+						<form:input  class="form-control" path="name"/>
 					</p>
 					<p>
 						<form:label path = "email">Email:</form:label>
 						<form:errors path="email"/>
-						<form:input path="email"/>
+						<form:input  class="form-control" path="email"/>
 					</p>
 									
 					<p>
 						<form:label path = "password">Password:</form:label>
 						<form:errors path="password"/>
-						<form:password path="password"/>
+						<form:password  class="form-control" path="password"/>
 					</p>
 					
 					<p>
 						<form:label path = "passwordConfirmation">PW Conf:</form:label>
 						<form:errors path="passwordConfirmation"/>
-						<form:password path="passwordConfirmation"/>
+						<form:password   class="form-control" path="passwordConfirmation"/>
 					</p>
 					
-					<input type="submit" value= "Register"/>
+					<input class="btn btn-dark float" type="submit" value= "Register"/>
 				</form:form>
 				
+				<br>
 				
 				<h3>Login</h3>
 				<p>${logerror}</p>
 				
-				<form method = "post" action = "/loginguser">			
+				<form class="col-sm-3 col-form-label" method = "post" action = "/loginguser">			
 					<p>
 						<label for = "email">Email</label> 
-						<input type ="text" id = "email" name = "inputemail"/>
+						<input  class="form-control" type ="text" id = "email" name = "inputemail"/>
 					</p>
 					
 					<p>
 						<label for = "password">Password</label> 
-						<input type ="password" id = "password" name = "inputpassword"/>
+						<input  class="form-control"  type ="password" id = "password" name = "inputpassword"/>
 					</p>
-					<input type = "submit" value ="Login!"/>
+					<input class="btn btn-dark float" type = "submit" value ="Login!"/>
 				</form>	
 					
 			</div>	
