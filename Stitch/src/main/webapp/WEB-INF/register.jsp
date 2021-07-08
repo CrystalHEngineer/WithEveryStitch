@@ -80,7 +80,7 @@
 						<form:password   class="form-control" path="passwordConfirmation"/>
 					</p>
 					
-					<input class="btn btn-dark float" type="submit" value= "Register"/>
+					<input class="btn btn-primary detailsbutton" type="submit" value= "Register"/>
 				</form:form>
 				
 				<br>
@@ -98,7 +98,7 @@
 						<label for = "password">Password</label> 
 						<input  class="form-control"  type ="password" id = "password" name = "inputpassword"/>
 					</p>
-					<input class="btn btn-dark float" type = "submit" value ="Login!"/>
+					<input class="btn btn-primary detailsbutton" type = "submit" value ="Login!"/>
 				</form>	
 					
 			</div>	

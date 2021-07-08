@@ -96,7 +96,7 @@ public class CartController {
 				//to get customer id for redirect
 		Guest guest = (Guest) session.getAttribute("guest");
 				
-		return "redirect:/"+guest.getId()+"/cart";		
+		return "redirect:/"+guest.getId()+"/cart/" + currentCartId;
 				
 	}	
 			

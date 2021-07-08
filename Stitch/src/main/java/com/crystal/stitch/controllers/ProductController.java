@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.crystal.stitch.models.CartItem;
 import com.crystal.stitch.models.Guest;
 import com.crystal.stitch.models.Product;
 import com.crystal.stitch.models.User;
@@ -59,12 +61,23 @@ public class ProductController {
 			} 
 	
 	@GetMapping("/product/{id}")
-	public String showProduct(@PathVariable("id") Long id, Model viewModel, HttpSession session) {
-		System.out.println("The product page.");
+	public String showProduct(@PathVariable("id") Long id, Model viewModel, HttpSession session, @ModelAttribute("newCartItem") CartItem newCartItem) {
+		//need for cart URL 
+		System.out.println("In the cart.");
+		Long currentUserId = (Long)session.getAttribute("theUserId");
+		User currentUser= this.uServ.findUserById(currentUserId);
+		viewModel.addAttribute("guest",currentUser);		
+		viewModel.addAttribute("loginUser",currentUser);
+		Long currentCartId = (Long) session.getAttribute("cart__id");
+		viewModel.addAttribute("cart",this.cartServ.findCartbyId(currentCartId));	
+		
+		
 		Product productToShowcase = this.pService.getSingleProduct(id);
 		viewModel.addAttribute("item", productToShowcase);
 		Guest currentGuest = (Guest) session.getAttribute("guest");
 		viewModel.addAttribute("guest", currentGuest);
+		//System.out.println(productToShowcase.getId());
 		return "details.jsp";
 	}
+
 }
