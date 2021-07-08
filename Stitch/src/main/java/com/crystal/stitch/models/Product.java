@@ -30,6 +30,7 @@ public class Product {
 	private Double price;
 	private String item;
 	private String img;
+	private String size;
 	@DateTimeFormat(pattern = "yyyy-MM-DD HH:mm:ss")
 	private Date createdAt;
 	@DateTimeFormat(pattern = "yyyy-MM-DD HH:mm:ss")
@@ -50,6 +51,15 @@ public class Product {
 			cascade=CascadeType.ALL,
 			fetch=FetchType.LAZY)
 	private List<CartItem> cartItems;
+
+
+	public List<CartItem> getCartItems() {
+		return cartItems;
+	}
+
+	public void setCartItems(List<CartItem> cartItems) {
+		this.cartItems = cartItems;
+	}
 
 	public Product() {
 	
@@ -147,6 +157,14 @@ public class Product {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
 	}
 	
 	
