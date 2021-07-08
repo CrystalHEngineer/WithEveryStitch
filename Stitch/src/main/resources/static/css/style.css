@@ -198,7 +198,7 @@ hr {
 }
 
 .card-img-top {
-	height: 200px;
+	height: 220px;
 }
 
 .card h5 {
@@ -225,10 +225,32 @@ hr {
     color: #fff;
 }
 
+
+/* ============================================ */
+/* details*/
+/* ============================================ */
+.details {
+	display: inline-block;
+}
+
 .catalog_container {
 	width: 1175px;
 	height: 700px;
 	margin-left: 175px;
+}
+
+.detailsdesc {
+	margin-left: 190px;
+	font-size: 22px;
+}
+
+.detailsimg {
+	height: 500px;
+	width: 450px;
+}
+
+.price {
+	font-size: 30px;
 }
 /* ============================================ */
 /* cart  and receipt*/
