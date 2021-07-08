@@ -17,4 +17,6 @@ public interface CartItemRepository extends CrudRepository <CartItem, Long> {
 	
 	//add or edit to cart
 	CartItem findByCartAndProduct(Cart cart, Product product);
+	
+
 }

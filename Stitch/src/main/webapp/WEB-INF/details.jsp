@@ -38,20 +38,7 @@
 			<mytags:sidebar />
 		</div>
 
-		<div class="catalog_container">
-			<form:form action="/${guest.id}/item/${item.id}/add" method="POST" modelAttribute="newCartItem">
-				
-				<img src="/images/${item.img}" alt="clothing">
-				<p>$${item.price}</p>
-				<p>${item.description}</p>
-				<div>
-					<label>Quantity: </label>
-					<input type="number" min="1" value="1" name="quantity" />
-				</div>
-				
-				<form:button class="btn btn-primary" type="submit">Add To Cart</form:button>
-			
-			</form:form>
+	
 		
 
 		</div>
