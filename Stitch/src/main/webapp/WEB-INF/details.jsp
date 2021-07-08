@@ -57,7 +57,7 @@
 						</select> 
 						</div>
 						<input type="hidden" name="itemid" value="${item.id}" />
-						<button class="btn btn-primary" type="submit">Add To Cart</button>
+						<button class="btn btn-primary detailsbutton" type="submit">Add To Cart</button>
 					</div>
 
 				</div>

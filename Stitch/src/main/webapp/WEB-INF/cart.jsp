@@ -45,7 +45,7 @@
 			<ul>
 				<c:forEach items="${cart.cartItems}" var="cartItem">			
 					<li>
-						${cartItem.product.name} ${cartItem.quantity} ${cartItem.price}									
+						${cartItem.quantity}									
 						<a href="/${guest.id}/item/${cartItem.product.id}">Edit Quantity</a>	
 						<a href="/${guest.id}/item/${cartItem.product.id}/remove">Remove</a>					
 					</li>	
@@ -62,8 +62,8 @@
 		<c:choose>	
 			<c:when test="${loginUser == null}">
 				<div id="checkoutOptions">
-					<a href="/${guest.id}/cart/${cart.id}/checkout/" class="btn1">Continue As Guest</a>
-					<a href="/registerpage" class="btn1">Log In/Register</a>
+					<a href="/${guest.id}/cart/${cart.id}/checkout/" class="btn btn-primary detailsbutton">Continue As Guest</a>
+					<a href="/registerpage" class="btn detailsbutton">Log In/Register</a>
 				</div>
 			</c:when>	
 			<c:otherwise>

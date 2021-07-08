@@ -206,25 +206,6 @@ hr {
 }
 
 
-.btn {
-	background-color: #4b4f4f;
-    border-color: #b2a5a5;
-    border-width: medium;
-}
-
-.btn1 {
-	background-color: #4b4f4f;
-    border-color: #b2a5a5;
-    border-width: medium;
-}
-
-.btn2 {
-	background-color: #4b4f4f;
-    border-color: #b2a5a5;
-    border-width: medium;
-    color: #fff;
-}
-
 
 /* ============================================ */
 /* details*/
@@ -255,6 +236,30 @@ hr {
 
 .quantitydetails {
 	width: 50px;
+}
+
+.detailsbutton:hover{
+     background: #4b4f4fd1;
+     border-color: #b2a5a5bd;
+}
+
+.detailsbutton {
+	background-color: #4b4f4f;
+    border-color: #b2a5a5;
+    border-width: medium;
+}
+
+.btn1 {
+	background-color: #4b4f4f;
+    border-color: #b2a5a5;
+    border-width: medium;
+}
+
+.btn2 {
+	background-color: #4b4f4f;
+    border-color: #b2a5a5;
+    border-width: medium;
+    color: #fff;
 }
 /* ============================================ */
 /* cart  and receipt*/

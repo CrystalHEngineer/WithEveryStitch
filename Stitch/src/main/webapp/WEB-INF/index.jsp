@@ -57,12 +57,12 @@
             <div class="item_top">
                 <img class="img-fluid" src="/images/5_woman-5611028_1920.jpg" alt="model" width="192" height="240">
                 <h4>BOHO CHIC</h4>
-                <a class="btn2" href="/wShirts">SHOP WOMEN'S SHIRTS</a>
+                <a class="btn btn-primary detailsbutton" href="/wShirts">SHOP WOMEN'S SHIRTS</a>
                 <br/>
 
                 <img class="img-fluid" src="/images/6_man-2792505_1920.jpg" alt="model" width="160" height="240">
                 <h4>WEEKEND CASUAL</h4>
-                <a class="btn2" href="/mShirts">SHOP MEN'S SHIRTS</a>
+                <a class="btn btn-primary detailsbutton" href="/mShirts">SHOP MEN'S SHIRTS</a>
                 <br/>
             </div>
 
