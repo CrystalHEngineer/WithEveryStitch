@@ -74,7 +74,7 @@
 			<c:when test="${loginUser == null}">
 				<div id="checkoutOptions">
 					<a href="/${guest.id}/cart/${cart.id}/checkout/" class="btn btn-primary detailsbutton">Continue As Guest</a>
-					<a href="/registerpage" class="btn detailsbutton">Log In/Register</a>
+					<a href="/registerpage" class="btn btn-primary detailsbutton">Log In/Register</a>
 				</div>
 			</c:when>	
 			<c:otherwise>
