@@ -51,8 +51,9 @@
             </div>
         </div>
         <!-- <div class = "container2"> -->
-			
-				<div class = "form-group">
+		<div class = "User-Part">
+		<div class = "form-group User-Part" >
+			<div class = "minor-part">
 				<p>${regerror}</p>
 				
 				<h3>Register</h3>
@@ -60,50 +61,60 @@
 					<p>
 						<form:label path = "name">Name:</form:label>
 						<form:errors path="name"/>
-						<form:input  class="form-control" path="name"/>
+						<form:input  class="form-control-login-control" path="name"/>
 					</p>
 					<p>
 						<form:label path = "email">Email:</form:label>
 						<form:errors path="email"/>
-						<form:input  class="form-control" path="email"/>
+						<form:input  class="form-control-login-control" path="email"/>
 					</p>
 									
 					<p>
 						<form:label path = "password">Password:</form:label>
 						<form:errors path="password"/>
-						<form:password  class="form-control" path="password"/>
+						<form:password  class="form-control-login-control" path="password"/>
 					</p>
 					
 					<p>
 						<form:label path = "passwordConfirmation">PW Conf:</form:label>
 						<form:errors path="passwordConfirmation"/>
-						<form:password   class="form-control" path="passwordConfirmation"/>
+						<form:password   class="form-control-login-control" path="passwordConfirmation"/>
 					</p>
 					
 					<input class="btn btn-primary detailsbutton" type="submit" value= "Register"/>
 				</form:form>
-				
-				<br>
-				
+			</div>
+			
+			
+			
+			<div class = 'minor-part'>
+			<br>	
 				<h3>Login</h3>
 				<p>${logerror}</p>
-				
 				<form class="col-sm-3 col-form-label" method = "post" action = "/loginguser">			
 					<p>
 						<label for = "email">Email</label> 
-						<input  class="form-control" type ="text" id = "email" name = "inputemail"/>
+						<input  class="form-control-login-control" type ="text" id = "email" name = "inputemail"/>
 					</p>
 					
 					<p>
 						<label for = "password">Password</label> 
-						<input  class="form-control"  type ="password" id = "password" name = "inputpassword"/>
+						<input  class="form-control-login-control"  type ="password" id = "password" name = "inputpassword"/>
 					</p>
+
 					<input class="btn btn-primary detailsbutton" type = "submit" value ="Login!"/>
 				</form>	
-					
+
 			</div>	
 		</div>	
-		<!-- </div> -->
+		
+				
+			</div>
+			</div>
+		
+	
+	<!-- </div> -->
+
 		<mytags:footer/>
 	</body>
 	<script type = "text/javascript" src="/javascript/script.js"></script>
