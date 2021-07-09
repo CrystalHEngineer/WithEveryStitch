@@ -38,15 +38,36 @@
 
 	<mytags:sidebar/>
 	<div>
-	 	<h1>Thank you for your purchase</h1>
-  		<ul>
-			<c:forEach items="${cart.cartItems}" var="cartItem">		
-				<li>
-					${cartItem.product.name} ${cartItem.quantity}					
-				</li>	
-			</c:forEach>
-		</ul>
-		<h2>price</h2>
+	 	
+ 	<div class="cart_background">
+		<h1>Thank you for your purchase ${user.name}</h1>
+		<div class="cart_container">
+			<div class="cart_items">
+			<ul>
+				<c:forEach items="${cart.cartItems}" var="cartItem">			
+						
+						<li>
+							<div class ="cart_item">						
+								<img src="/images/${cartItem.product.img}"alt="clothing" class="detailsimg"> 															
+								<p> ${cartItem.quantity} ${cartItem.product.gender} ${cartItem.product.item} ${cartItem.product.price}</p>
+								<p>${cartItem.product.description}</p>
+							</div>				
+						</li>
+						
+				</c:forEach>
+			</ul>
+			</div>
+			<hr>
+			<div class="cart_total">
+				<c:set var="total" value="${0}"/>								
+				<c:forEach items="${cart.cartItems}" var="cartItem">					
+					<c:set var="total" value="${total + cartItem.product.price}"/>					
+				</c:forEach>			
+				<h2>SubTotal: ${total}</h2>
+				<h2>Total: ${total + (total *.065)}</h2>
+			</div>
+		</div>
+	</div>	
 	</div>
 	<mytags:footer/>
 </body>

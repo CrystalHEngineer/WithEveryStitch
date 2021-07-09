@@ -18,7 +18,7 @@ import com.crystal.stitch.models.User;
 import com.crystal.stitch.services.CartService;
 import com.crystal.stitch.services.FeedbackService;
 import com.crystal.stitch.services.GuestService;
-import com.crystal.stitch.services.ProductService;
+
 import com.crystal.stitch.services.UserService;
 
 
@@ -27,8 +27,6 @@ public class WebsiteController {
 
 	@Autowired
 	private FeedbackService fService;		
-	@Autowired
-	private ProductService productServ;	
 	@Autowired 
 	 private CartService cartServ;
 	@Autowired
@@ -68,7 +66,6 @@ public class WebsiteController {
 					return "redirect:/";
 				}
 				
-				//return "redirect:/";
 			}	
 							
 				///checks if current cart has been purchased
@@ -87,15 +84,33 @@ public class WebsiteController {
 				return "index.jsp";
 		}
 		
+	
 		else{
 			
 			Long currentUserId = (Long)session.getAttribute("theUserId");
-			User currentUser= this.uServ.findUserById(currentUserId);
+			User currentUser= this.uServ.findUserById(currentUserId);			
 			viewModel.addAttribute("guest",currentUser);
+			
 			// needed for navbar tag <c:choose>
 			viewModel.addAttribute("loginUser",currentUser);
+			
 			Long currentCartId = (Long) session.getAttribute("cart__id");
-			viewModel.addAttribute("cart",this.cartServ.findCartbyId(currentCartId));				
+			Cart currectCart = this.cartServ.findCartbyId(currentCartId);
+			viewModel.addAttribute("cart",this.cartServ.findCartbyId(currentCartId));	
+			
+			if(currectCart.getOrder().equals("yes")) {
+								
+				Cart newCart = new Cart();
+				
+				//saves cart as login user
+				this.cartServ.newUserCart(newCart, currentUser);
+				
+				//sets new cart id in session
+				session.setAttribute("cart__id", newCart.getId());
+			
+				return "redirect:/";
+				
+			}
 			return "index.jsp";
 		}
 	

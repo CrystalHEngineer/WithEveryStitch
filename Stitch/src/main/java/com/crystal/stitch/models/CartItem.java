@@ -31,9 +31,6 @@ public class CartItem {
 
 	private String size;
 	
-	
-	
-	
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="product_id")
