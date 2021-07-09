@@ -28,7 +28,6 @@ public class Cart {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String total;
 	
 	
 	@Column(name ="order_status")
@@ -98,8 +97,6 @@ public class Cart {
 		this.createdAt = createdAt;
 	}
 	
-	
-
 	public String getOrder() {
 		return Order;
 	}

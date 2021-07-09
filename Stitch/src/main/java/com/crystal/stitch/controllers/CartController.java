@@ -38,7 +38,9 @@ public class CartController {
 	///shows cart
 	@GetMapping("/{guestId}/cart/{cartId}")
 	public String cart( @PathVariable("guestId") Long guestId, @PathVariable("cartId") Long cartId , @ModelAttribute("order") Cart cart,HttpSession session, Model viewModel)  {
-			System.out.println("Moving to the cart.");
+			//System.out.println("Moving to the cart.");
+		
+		
 		//sets current cart id through session			
 		Long currentCartId = (Long) session.getAttribute("cart__id");
 		viewModel.addAttribute("cart",this.cartServ.findCartbyId(currentCartId));
@@ -64,10 +66,12 @@ public class CartController {
 			User currentUser= this.uServ.findUserById(currentUserId);
 			viewModel.addAttribute("guest",currentUser);
 			// needed for navbar tag <c:choose>
-			viewModel.addAttribute("loginUser",currentUser);						
+			viewModel.addAttribute("loginUser",currentUser);
 				//need this to compare and validated
 			Cart currentCart = this.cartServ.findCartbyId(currentCartId);
-			Cart accessCart = this.cartServ.findCartbyId(cartId);				
+			Cart accessCart = this.cartServ.findCartbyId(cartId);	
+			//updates fromcart
+			this.cartServ.loginUpdateCart(currentCart, currentUser);
 			//validates to check cart id to avoid URL manipulation
 				if(accessCart != currentCart) {
 					return "redirect:/"+currentUser.getId()+"/cart/"+currentCartId;
@@ -80,7 +84,7 @@ public class CartController {
 	@PostMapping("/{guestId}/item/{productId}/add")
 	public String addProductToCart(@ModelAttribute("newCartItem") CartItem newCartItem, BindingResult result,@PathVariable("guestId") Long guestId, @PathVariable("productId") Long productId, HttpSession session,Model viewModel) {	
 				
-				System.out.println("Added to the cart.");
+				//System.out.println("Added to the cart.");
 				// gets cart from session
 		Long currentCartId = (Long) session.getAttribute("cart__id");
 				
@@ -113,10 +117,9 @@ public class CartController {
 				//calls service to delete product	
 		this.cItemServ.removeProduct(productId, currentCart);
 				
-				//gets current customer in order to redirect to cart 
-		Long currentGuestId= (Long)session.getAttribute("guest");
+
 				
-		return "redirect:/" + currentGuestId + "/cart";
+		return "redirect:/" + guestId + "/cart/"+ currentCartId;
 	}
 	
 	
@@ -134,6 +137,7 @@ public class CartController {
 		//need this to compare and validated
 		Cart currentCart = this.cartServ.findCartbyId(currentCartId);
 		Cart accessCart = this.cartServ.findCartbyId(cartId);				
+		
 		//validates to check cart id to avoid URL manipulation
 		if(accessCart != currentCart) {
 			return "redirect:/"+currentGuest.getId()+"/"+currentCartId;
@@ -143,16 +147,49 @@ public class CartController {
 		return "orderReview.jsp";	
 				}
 	}
-			
-	@PostMapping("/{guestId}/cart/{cartId}/purchase")
-	public String purchaseProductsi(@ModelAttribute("order") Cart cart, @PathVariable("guestId") Long guestId,  @PathVariable("cartId") Long cartId, HttpSession session, Model viewModel) {
-					
-		Guest guest = (Guest) session.getAttribute("guest");
+	
+	@GetMapping("/{guestId}/cart/{cartId}/receipt")
+	public String receipt(@ModelAttribute("order") Cart cart, @PathVariable("guestId") Long guestId,  @PathVariable("cartId") Long cartId, HttpSession session, Model viewModel) {{
 		Long currentCartId= (Long) session.getAttribute("cart__id");
 		Cart currentCart = this.cartServ.findCartbyId(currentCartId);
-		this.cartServ.newOrder(currentCart, guest);
-		return "receipt.jsp";
+		viewModel.addAttribute("cart",currentCart);
+		
+		if(session.getAttribute("theUserId")==null) {
+			Guest guest = (Guest) session.getAttribute("guest");
+			this.cartServ.newOrder(currentCart, guest);
+			return "receipt.jsp";
+		}
+		
+		else {
+			Long currentUserId= (Long) session.getAttribute("theUserId");
+			User currentUser= this.uServ.findUserById(currentUserId);
+			viewModel.addAttribute("user",currentUser);
+			this.cartServ.newOrderLogin(currentCart, currentUser);
+			return "receipt.jsp";
+			}
 	}	
+	}
 	
+	@PostMapping("/{guestId}/cart/{cartId}/purchase")
+	public String purchaseProducts(@ModelAttribute("order") Cart cart, @PathVariable("guestId") Long guestId,  @PathVariable("cartId") Long cartId, HttpSession session, Model viewModel) {
+		
+		Long currentCartId= (Long) session.getAttribute("cart__id");
+		Cart currentCart = this.cartServ.findCartbyId(currentCartId);
+		viewModel.addAttribute("cart",currentCart);
+		
+		if(session.getAttribute("theUserId")==null) {
+			Guest guest = (Guest) session.getAttribute("guest");
+			this.cartServ.newOrder(currentCart, guest);
+			return "redirect:/" + guest.getId() + "/cart/" + currentCartId + "/receipt";
+		}
+		
+		else {
+			Long currentUserId= (Long) session.getAttribute("theUserId");
+			User currentUser= this.uServ.findUserById(currentUserId);
+			viewModel.addAttribute("user",currentUser);
+			this.cartServ.newOrderLogin(currentCart, currentUser);
+			return "redirect:/" + currentUserId + "/cart/" + currentCartId + "/receipt";
+			}
+	}		
 
 }

@@ -44,18 +44,29 @@
 			<div class="cart_items">
 			<ul>
 				<c:forEach items="${cart.cartItems}" var="cartItem">			
-					<li>
-						${cartItem.quantity}									
-						<a href="/${guest.id}/item/${cartItem.product.id}">Edit Quantity</a>	
-						<a href="/${guest.id}/item/${cartItem.product.id}/remove">Remove</a>					
-					</li>	
+						
+						<li>
+							<div class ="cart_item">						
+								<img src="/images/${cartItem.product.img}"alt="clothing" class="detailsimg"> 															
+								<p> ${cartItem.quantity} ${cartItem.product.gender} ${cartItem.product.item} ${cartItem.product.price}</p>
+								<p><a href="/product/${cartItem.product.id}">Edit Quantity And Size</a>	</p>
+								<a href="/${guest.id}/item/${cartItem.product.id}/remove">Remove</a>
+							</div>				
+						</li>
+						
 				</c:forEach>
 			</ul>
 			</div>
 			<hr>
 			<div class="cart_total">
-				<h2>SubTotal:</h2>
-				<h2>Total:</h2>
+				<c:set var="total" value="${0}"/>
+								
+				<c:forEach items="${cart.cartItems}" var="cartItem">					
+					<c:set var="total" value="${total + cartItem.product.price}"/>					
+				</c:forEach>
+				
+				<h2>SubTotal: ${total}</h2>
+				<h2>Total: ${total + (total *.065)}</h2>
 			</div>
 
 		</div>
