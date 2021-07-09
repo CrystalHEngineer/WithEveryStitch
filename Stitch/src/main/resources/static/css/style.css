@@ -239,14 +239,14 @@ hr {
 }
 
 .detailsbutton:hover{
-     background: #4b4f4fd1;
-     border-color: #b2a5a5bd;
+     background: #4b4f4fd1 !important;
+     border-color: #b2a5a5bd !important;
 }
 
 .detailsbutton {
-	background-color: #4b4f4f;
-    border-color: #b2a5a5;
-    border-width: medium;
+	background-color: #4b4f4f !important;
+    border-color: #b2a5a5 !important;
+    border-width: medium !important;
 }
 
 .btn1 {

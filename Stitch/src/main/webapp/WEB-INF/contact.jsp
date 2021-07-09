@@ -68,7 +68,7 @@
 		    
 		    <div class="form-group row">
 		    	<div class="col-sm-12">
-		    		<input type="submit" class="btn btn-dark float-right" value="Submit">
+		    		<input type="submit" class="btn btn-primary detailsbutton float-right" value="Submit">
 		      	</div>
 		    </div>
 		    
