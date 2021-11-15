@@ -3,6 +3,8 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="mytags" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Benne&family=Caveat:wght@600&display=swap" rel="stylesheet">
 
-<title>Shopping Cart</title>
+<title>Checkout</title>
 </head>
 <body>
 	<mytags:navbar/>
@@ -33,13 +35,12 @@
                 <h1 class="banner2">Make life exciting <span id="logo_font">With Every Stitch</span></h1>
             </div>
         </div>
-	
 	</div>
 
 	<mytags:sidebar/>
 	
 	<div class="cart_background">
-		<h1>Currently In Your Cart</h1>
+		<h1>Checkout</h1>
 		<div class="cart_container">
 			<div class="cart_items">
 			<ul>
@@ -56,6 +57,9 @@
 				</c:forEach>
 			</ul>
 			</div>
+
+			
+			
 			<hr>
 			<div class="cart_total">
 				<c:set var="total" value="${0}"/>
@@ -64,13 +68,32 @@
 					<c:set var="total" value="${total + cartItem.product.price}"/>					
 				</c:forEach>
 				
-				<h2>SubTotal: ${total}</h2>
-				<h2>Total: ${total + (total *.065)}</h2>
+				<h2>SubTotal: <fmt:formatNumber type="currency" maxFractionDigits="2" value="${total}" /></h2>
+				<c:set var="tax" value="${Math.nextDown(total * .065) }"/>
+				<h2>Tax: (6.5%) <fmt:formatNumber type="currency" maxFractionDigits="2" value="${tax}" /> </h2>
+				<h2>Total: <fmt:formatNumber type="currency" maxFractionDigits="2" value="${total + tax}" /></h2>
 			</div>
 		</div>
-		<form:form action="/${guest.id}/cart/${cart.id}/purchase" method="post" modelAttribute ="order" >
-			<form:button class="order_button">Submit Order</form:button>
-		</form:form>
+		
+		
+		
+		
+		<h3>Make Payment</h3>
+
+		<form action="/${guestId}/cart/${cartId}/purchase/<fmt:formatNumber type="number" maxFractionDigits="2" value="${total + tax}" />" method="POST">
+			<script 
+				src="https://checkout.stripe.com/checkout.js"
+				class="stripe-button" 
+				data-key="pk_test_51JWlyiHlsp7LpxwL9ULfYYi8ALpglqdkZxAouBFVdW01piKqBl85QzBQHkL8Dhk90VbUcwIEKUhKj79LH3Yude0F00fy4P3Aae"
+				data-amount="${(total + (total *.065))*100}" 
+				data-name="With Every Stitch"
+				data-description="Stripe Demo Charge"
+				data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+				data-locale="auto"
+				>
+			</script>
+		</form>
+		
 	</div>	
 			
 	<mytags:footer/>

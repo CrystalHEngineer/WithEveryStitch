@@ -3,6 +3,7 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="mytags" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +46,8 @@
 				<div class="card" style="width: 18rem;">
 					<img src="images/${item.img}" class="card-img-top" alt="man_shirt">
 					<div class="card-body">
-						<h5 class="card-title">${item.gender} ${item.item}     $${item.price}</h5>
+						<h5 class="card-title">${item.gender} <fmt:formatNumber type="currency" maxFractionDigits="2" value="${item.price}" /></h5>
+						
 						<a href="/product/${item.id}" class="btn btn-primary detailsbutton">Product Details</a>
 					</div>
 				</div>
