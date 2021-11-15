@@ -1,8 +1,13 @@
 package com.crystal.stitch.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,6 +24,9 @@ import com.crystal.stitch.services.CartItemService;
 import com.crystal.stitch.services.CartService;
 import com.crystal.stitch.services.GuestService;
 import com.crystal.stitch.services.UserService;
+import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
+import com.stripe.model.Charge;
 
 @Controller
 public class CartController {
@@ -34,6 +42,9 @@ public class CartController {
 	
 	@Autowired
 	private UserService uServ;
+	
+	@Value("${stripe.apikey}")
+	String stripeKey;
 	
 	///shows cart
 	@GetMapping("/{guestId}/cart/{cartId}")
@@ -148,6 +159,7 @@ public class CartController {
 				}
 	}
 	
+		
 	@GetMapping("/{guestId}/cart/{cartId}/receipt")
 	public String receipt(@ModelAttribute("order") Cart cart, @PathVariable("guestId") Long guestId,  @PathVariable("cartId") Long cartId, HttpSession session, Model viewModel) {{
 		Long currentCartId= (Long) session.getAttribute("cart__id");
@@ -170,17 +182,36 @@ public class CartController {
 	}	
 	}
 	
-	@PostMapping("/{guestId}/cart/{cartId}/purchase")
-	public String purchaseProducts(@ModelAttribute("order") Cart cart, @PathVariable("guestId") Long guestId,  @PathVariable("cartId") Long cartId, HttpSession session, Model viewModel) {
+	@PostMapping("/{guestId}/cart/{cartId}/purchase/{total}")
+	public String purchaseProducts(HttpServletRequest request, @ModelAttribute("order") Cart cart, @PathVariable("guestId") Long guestId,  @PathVariable("cartId") Long cartId, @PathVariable("total") Double total, HttpSession session, Model viewModel) throws StripeException {
 		
-		Long currentCartId= (Long) session.getAttribute("cart__id");
+		Long currentCartId = (Long) session.getAttribute("cart__id");
 		Cart currentCart = this.cartServ.findCartbyId(currentCartId);
 		viewModel.addAttribute("cart",currentCart);
 		
 		if(session.getAttribute("theUserId")==null) {
 			Guest guest = (Guest) session.getAttribute("guest");
 			this.cartServ.newOrder(currentCart, guest);
-			return "redirect:/" + guest.getId() + "/cart/" + currentCartId + "/receipt";
+//			return "redirect:/" + guest.getId() + "/cart/" + currentCartId + "/receipt";
+			
+			Stripe.apiKey = stripeKey;
+			String token = request.getParameter("stripeToken");
+
+			int totalCharge = (int) Math.round(total);
+					
+			// Charge the user's card:
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("amount", totalCharge);
+			params.put("currency", "usd");
+			params.put("description", "Stripe Demo Charge");
+			params.put("source", token);
+
+			Charge charge = Charge.create(params);
+
+			viewModel.addAttribute("checkoutPaySuccess", true);
+
+			return "redirect:/" + guestId + "/cart/" + cartId + "/receipt";
+			
 		}
 		
 		else {
@@ -188,7 +219,7 @@ public class CartController {
 			User currentUser= this.uServ.findUserById(currentUserId);
 			viewModel.addAttribute("user",currentUser);
 			this.cartServ.newOrderLogin(currentCart, currentUser);
-			return "redirect:/" + currentUserId + "/cart/" + currentCartId + "/receipt";
+			return "redirect:/" + guestId + "/cart/" + cartId + "/receipt";
 			}
 	}		
 

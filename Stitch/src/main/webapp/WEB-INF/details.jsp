@@ -3,6 +3,8 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="mytags" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,12 +43,12 @@
 		<div class="catalog_container">
 			<form action="/${guest.id}/item/${item.id}/add" method="POST">
 				<div class="details">
-					<p>${guest.id}</p>
+					<%-- <p>GUEST ID ${guest.id}</p> --%>
 					<img src="/images/${item.img}" alt="clothing" class="detailsimg">
 				</div>
 				<div class="details">
 					<div class="detailsdesc">
-						<p class="price">$${item.price}</p>
+						<p class="price"><fmt:formatNumber type="currency" maxFractionDigits="2" value="${item.price}" /></p>
 						<p>${item.description}</p>
 						<div>
 						 <label>Quantity: </label> <input type="number" min="1" value="1" name="quantity" class="quantitydetails"/> <select name="size_id">
