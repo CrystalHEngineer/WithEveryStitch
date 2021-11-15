@@ -3,6 +3,8 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="mytags" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,9 +64,12 @@
 				<c:set var="total" value="${0}"/>								
 				<c:forEach items="${cart.cartItems}" var="cartItem">					
 					<c:set var="total" value="${total + cartItem.product.price}"/>					
-				</c:forEach>			
-				<h2>SubTotal: ${total}</h2>
-				<h2>Total: ${total + (total *.065)}</h2>
+				</c:forEach>	
+						
+				<h2>SubTotal: <fmt:formatNumber type="currency" maxFractionDigits="2" value="${total}" /></h2>
+				<c:set var="tax" value="${Math.nextDown(total * .065)}"/>
+				<h2>Tax: (6.5%) <fmt:formatNumber type="currency" maxFractionDigits="2" value="${tax}" /> </h2>
+				<h2>Total: <fmt:formatNumber type="currency" maxFractionDigits="2" value="${total + tax}" /></h2>
 			</div>
 		</div>
 	</div>	
