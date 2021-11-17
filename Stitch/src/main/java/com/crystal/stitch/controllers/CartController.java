@@ -197,8 +197,7 @@ public class CartController {
 			Stripe.apiKey = stripeKey;
 			String token = request.getParameter("stripeToken");
 
-			int totalCharge = (int) Math.round(total);
-					
+			int totalCharge = (int) Math.round(total * 100);
 			// Charge the user's card:
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("amount", totalCharge);
